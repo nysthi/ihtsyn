@@ -1,0 +1,53 @@
+{
+  "slug": "ihtsyn",
+  "name": "ihtsyn",
+  "version": "2.0.0",
+  "license": "GPL-3.0-or-later",
+  "brand": "ihtsyn",
+  "author": "",
+  "authorEmail": "",
+  "authorUrl": "",
+  "pluginUrl": "",
+  "manualUrl": "",
+  "sourceUrl": "",
+  "donateUrl": "",
+  "changelogUrl": "",
+  "modules": [
+      {
+         "slug": "MVerb",
+         "name": "MVerb Reverb",
+         "description": "Reverb based on the MVerb code",
+         "tags": [
+            "REVERB",
+            "EFFECT"
+         ]
+      },
+      {
+         "slug": "HiVerb",
+         "name": "HiVerb Reverb",
+         "description": "Reverb with inverted equalization",
+         "tags": [
+            "REVERB",
+            "EFFECT"
+         ]
+      },
+      {
+         "slug": "TwistedMVerb",
+         "name": "TwistedMVerb Reverb",
+         "description": "Reverb based on the MVerb with twisted buffers lenght + CVs",
+         "tags": [
+            "REVERB",
+            "EFFECT"
+         ]
+      },
+      {
+         "slug": "PitchShifter",
+         "name": "PitchShifter",
+         "description": "pitch shifter DERIVED from The Synthesis ToolKit in C++ (STK)",
+         "tags": [
+            "Effect",
+            "filter"
+         ]
+      }
+  ]
+}
