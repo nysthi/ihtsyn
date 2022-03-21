@@ -1,6 +1,11 @@
 #pragma once
 #include <rack.hpp>
-
+#include <mutex>
+#include <string>
+#include <iostream>
+#include <iomanip>
+#include <sstream>
+#include <memory>
 
 using namespace rack;
 
