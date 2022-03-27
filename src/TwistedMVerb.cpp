@@ -68,6 +68,12 @@ public:
         hipassFilter[0].Type(hipassFilter[0].HIGHPASS);
         hipassFilter[1].Type(hipassFilter[1].HIGHPASS);
         
+        m_samplerate = 44100.;
+        m_predelaytime = 0.5 * 200 * (m_samplerate / 1000);
+        m_roomsize = (0.95 * 0.5 * 0.5) + 0.05;
+        m_density1 = (0.995f * 0.5) + 0.0045;
+        m_decay = ((0.9995f * 0.5) + 0.004);
+        m_density2 = m_decay + 0.15;
         reset();
     }
 
@@ -1038,8 +1044,9 @@ template<typename T, int OverSampleCount>
     public:
         mv_statevariable()
         {
-            SetSampleRate(44100.);
-            Frequency(1000.);
+            sampleRate = 44100. * OverSampleCount;
+            frequency = 1000.;
+            UpdateCoefficient();
             Resonance(0);
             Type(LOWPASS);
             Reset();

@@ -67,7 +67,13 @@ public:
     mv_reverb_original(){
         hipassFilter[0].Type(hipassFilter[0].HIGHPASS);
         hipassFilter[1].Type(hipassFilter[1].HIGHPASS);
-        
+
+        m_samplerate = 44100.;
+        m_predelaytime = 0.5 * 200 * (m_samplerate / 1000);
+        m_roomsize = (0.95 * 0.5 * 0.5) + 0.05;
+        m_density1 = (0.995f * 0.5) + 0.0045;
+        m_decay = ((0.9995f * 0.5) + 0.004);
+        m_density2 = m_decay + 0.15;
         reset();
     }
 
@@ -546,6 +552,7 @@ public:
         read_index2 = 0;
         read_index3 = 0;
         read_index4 = 0;
+        length = 0;
         feedback = 0.5;
         set_length(max_length - 1);
         zero();
@@ -709,6 +716,7 @@ public:
     {
         write_index = 0;
         read_index = 0;
+        length = 0;
         set_length(max_length - 1);
         zero();
     }
@@ -793,6 +801,7 @@ public:
         read_index2 = 0;
         read_index3 = 0;
         read_index4 = 0;
+        length = 0;
         set_length(max_length - 1);
         zero();
     }
@@ -959,6 +968,7 @@ public:
         read_index6 = 0;
         read_index7 = 0;
         read_index8 = 0;
+        length = 0;
         set_length(max_length - 1);
         zero();
     }
@@ -1365,8 +1375,9 @@ template<typename T, long OverSampleCount>
     public:
         mv_statevariable()
         {
-            SetSampleRate(44100.);
-            Frequency(1000.);
+            frequency = 1000.;
+            sampleRate = 44100. * OverSampleCount;
+            UpdateCoefficient();
             Resonance(0);
             Type(LOWPASS);
             Reset();
